@@ -54,6 +54,18 @@ module Enumerable
     result
   end
 
+  def my_inject(initial = nil)
+    acc = initial
+    my_each do |element|
+      if acc.nil?
+        acc = element
+      else
+        acc = yield(acc, element)
+    end
+    end
+    acc
+  end
+
 
   def my_select
       return to_enum(:my_select) unless block_given?
